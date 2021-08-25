@@ -16,6 +16,14 @@ Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by press
 print("10")
 ```
 
+```{r}
+edad <-c(1,2,3,4,5)
+```
+
+```{r}
+table(edad)
+```
+
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 

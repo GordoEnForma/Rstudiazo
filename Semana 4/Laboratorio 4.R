@@ -71,8 +71,10 @@ head(runtime_data)
 
 runtime_data<-gsub(" min","",runtime_data)
 
+runtime_data[100] <- 120
 runtime_data<-as.numeric(runtime_data)
 head(runtime_data)
+length(runtime_data)
 
 genre_data_html <- html_nodes(pelis,'.genre')
 genre_data <- html_text(genre_data_html)
@@ -146,6 +148,7 @@ head(actor_data)
 
 pelis_df<-data.frame(Rank = rank_data, Titulo = tit_data,
                      Genero = genre_data, Director = director_data,
+                     Runtime= runtime_data,
                      Descripcion = desc_data,Rating = rating_data,
                      Votos = votos_data
                      )
@@ -157,6 +160,12 @@ write.csv(pelis_df,'pelis_df.csv',row.names = TRUE)
 tot_pelis <- table(pelis_df$Genero)
 tot_pelis
 head(tot_pelis)
+
+
+library('ggplot2')
+qplot(data = pelis_df,Runtime,fill = Genero,bins = 30, main="Pelicula: Duracion vs Genero")
+
+
 
 barplot(tot_pelis,main="Distribucion de Peliculas segun Genero",xlab="Genero",ylab="Total Peliculas")
 
